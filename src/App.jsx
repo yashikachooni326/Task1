@@ -1,10 +1,11 @@
 
 import { Component2 } from "./Day5/Pages/Component2"
 import { HomePage } from "./Day5/Pages/HomePage"
-// import { Navbar } from "./Day6/Navbar"
+import { Navbar } from "./Day6/Navbar"
 import { Route,Routes } from "react-router-dom"
 import { RegisterUser } from "./Day6/RegisterUser"
 import { Home } from "./Day6/Home"
+import { Login } from "./Day6/Login"
 
 function App() {
 
@@ -13,12 +14,13 @@ function App() {
 
     {/* <HomePage/>  */}
     {/* <Component2/> */}
-    {/* <Navbar/> */}
-    {/* <Routes>
+    <Navbar/> 
+     <Routes>
       <Route path="/" element={<Home/>}/> 
       <Route path="/register-user" element={<RegisterUser/>}/>
-    </Routes> */}
-    <RegisterUser/>
+      <Route path="/login" element={<Login/>}/>
+    </Routes>
+    {/* <RegisterUser/> */}
     </>
   )
 }

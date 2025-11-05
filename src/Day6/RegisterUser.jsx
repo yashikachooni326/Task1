@@ -7,9 +7,18 @@ import { useState } from "react";
 import ReactQuill from "react-quill-new";
 import "react-quill-new/dist/quill.snow.css";
 import { useEffect } from "react";
+import makeAnimated from 'react-select/animated';
+import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
 
 export const RegisterUser = () => {
-    const options = [
+
+    const navigate = useNavigate();
+
+
+
+    const skills = [
         { value: "Maths", label: "Maths" },
         { value: "Science", label: "Science" },
         { value: "Node", label: "Node" },
@@ -47,33 +56,51 @@ export const RegisterUser = () => {
             .min(10, "Enter a valid phone number")
             .max(15, "Enter a valid phone number"),
         gender: yup.string().required("Please select gender"),
-        subject: yup.string().required("Please select atleast one subject"),
+        subject: yup
+            .array()
+            .min(1, "Please select at least one subject")
+            .required("Required"),
         description: yup.string().required("Description is required"),
     });
 
-      const data = JSON.parse(localStorage.getItem("registerUser")) || {};
+    const data = JSON.parse(localStorage.getItem("registerUser")) || {};
 
     const formik = useFormik({
-       initialValues: {
+        initialValues: {
             name: data.name || "",
             email: data.email || "",
             password: data.password || "",
             age: data.age || "",
             contact: data.contact || "",
             gender: data.gender || "",
-            subject: data.subject || "",
+            subject: data.subject || [],
             description: data.description || "",
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
-            alert("User Registered Successfully!");
             localStorage.setItem("registerUser", JSON.stringify(values));
+             Swal.fire({
+            title: "Success",
+            text: "User registered successfully!",
+
+            confirmButtonText: "Go to Login",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                navigate("/login");
+            }
+        });
+            handleToggle();
             console.log("Form Submitted:", values);
-           
+
         },
     });
 
-   
+
+    const removeData = () => {
+        localStorage.removeItem("registerUser");
+    }
+
+
     return (
         <>
             <div className="flex justify-center items-center min-h-screen bg-gray-50">
@@ -153,17 +180,17 @@ export const RegisterUser = () => {
                             <label className="block text-md  mb-1">Gender:</label>
                             <div className="space-x-4">
                                 <label>
-                                    <input  type="radio"  name="gender"  value="male"  onChange={formik.handleChange} checked={formik.values.gender === "male"}
+                                    <input type="radio" name="gender" value="male" onChange={formik.handleChange} checked={formik.values.gender === "male"}
                                     />{" "}
                                     Male
                                 </label>
                                 <label>
-                                    <input type="radio" name="gender" value="female" onChange={formik.handleChange}  checked={formik.values.gender === "female"}
+                                    <input type="radio" name="gender" value="female" onChange={formik.handleChange} checked={formik.values.gender === "female"}
                                     />{" "}
                                     Female
                                 </label>
                                 <label>
-                                    <input type="radio" name="gender" value="other"onChange={formik.handleChange}checked={formik.values.gender === "other"}
+                                    <input type="radio" name="gender" value="other" onChange={formik.handleChange} checked={formik.values.gender === "other"}
                                     />{" "}
                                     Other
                                 </label>
@@ -183,24 +210,17 @@ export const RegisterUser = () => {
                             <Select
                                 id="subject"
                                 name="subject"
-                                options={options}
-                                isMulti={true}
-                                value={
-                                    options.find(
-                                        (option) => option.value === formik.values.subject
-                                    ) || null
-                                }
-                                onChange={(option) => {
-                                    setSelectedOption(option);
-                                    formik.setFieldValue("subject", option ? option.value : "");
-                                }}
-                                onBlur={formik.handleBlur}
+                                isMulti
+                                options={skills}
                                 className="w-full"
-                                placeholder="Select Subject"
+                                value={formik.values.subject}
+                                onChange={(selected) => formik.setFieldValue("subject", selected)}
+                                onBlur={() => formik.setFieldTouched("subject", true)}
                             />
                             {formik.touched.subject && formik.errors.subject && (
                                 <p className="text-red-500 text-sm">{formik.errors.subject}</p>
                             )}
+
                         </div>
 
                         <div>
@@ -222,18 +242,26 @@ export const RegisterUser = () => {
                                     {formik.errors.description}
                                 </p>
                             )}
+
+                            <div dangerouslySetInnerHTML={{ __html: formik.values.description }}></div>
                         </div>
 
                         <div className="flex justify-center">
                             <button
                                 type="submit"
-                                className="bg-orange-400 text-white  px-6 py-2 rounded-lg hover:bg-orange-500 transition"
+                              
+                                className="bg-orange-400 text-white px-6 py-2 rounded-lg hover:bg-orange-500 transition"
                             >
                                 Submit
                             </button>
 
-                            <button type="button" onClick={()=> localStorage.removeItem("registerUser")}  className="bg-orange-400 text-white ml-4   px-6 py-2 rounded-lg hover:bg-orange-500 transition">Reset</button>
-                              
+                            {/* <button
+                                type="button"
+                                onClick={removeData}
+                                className="bg-orange-400 text-white ml-4 px-6 py-2 rounded-lg hover:bg-orange-500 transition">
+                                Reset
+                            </button> */}
+
                         </div>
                     </form>
                 </div>
