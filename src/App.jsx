@@ -1,30 +1,31 @@
-
-import { Component2 } from "./Day5/Pages/Component2"
-import { HomePage } from "./Day5/Pages/HomePage"
-import { Navbar } from "./Day6/Navbar"
-import { Route,Routes } from "react-router-dom"
-import { RegisterUser } from "./Day6/RegisterUser"
-import { Home } from "./Day6/Home"
-import { Login } from "./Day6/Login"
+import { Routes, Route } from "react-router-dom";
+import { Home } from "./Day7/Home";
+import { Cart } from "./Day7/Cart";
+import { Login } from "./Day6/Login";
+import { Signup } from "./Day7/Signup";
+import { ProtectedRoute } from "./Day7/ProtectedRoute";
 
 function App() {
-
   return (
     <>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
 
-    {/* <HomePage/>  */}
-    {/* <Component2/> */}
-    <Navbar/> 
-     <Routes>
-      <Route path="/" element={<Home/>}/> 
-      <Route path="/register-user" element={<RegisterUser/>}/>
-      <Route path="/login" element={<Login/>}/>
-    </Routes>
-    {/* <RegisterUser/> */}
+        <Route path="/" element={
+          <ProtectedRoute>
+          <Home />
+          </ProtectedRoute>
+          } />
+        <Route path="/cart/:id" element={
+          <ProtectedRoute>
+          <Cart/> 
+          </ProtectedRoute>
+           }
+        />
+      </Routes>
     </>
-  )
+  );
 }
 
-export default App
-
-
+export default App;

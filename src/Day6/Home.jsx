@@ -11,7 +11,7 @@ export const Home = () => {
 
     return (
         <>
-        {/* <button  target="_blank"type="button" className="border rounded-lg bg-amber-500 px-4 py-2 mt-4 ml-3">Download As PDF</button> */}
+       
         <div className="h-80 w-100 bg-amber-50 rounded-xl shadow-lg border border-solid border-indigo-600 ml-115 mt-5 p-4">
             <h1 className="font-medium text-xl text-center mb-5">
                 Welcome {userData.name}
