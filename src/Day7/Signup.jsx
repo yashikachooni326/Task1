@@ -2,7 +2,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 
-export const Signup = () => {
+export default function Signup  ()  {
   const navigate = useNavigate();
 
   const validationSchema = yup.object({

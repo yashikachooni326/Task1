@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Navbar } from "./Navbar"; 
-export const Cart = () => {
+export default function Cart  ()  {
   const { id } = useParams();  
   const [product, setProduct] = useState(null);
 

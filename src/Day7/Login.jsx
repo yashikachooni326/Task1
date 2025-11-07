@@ -3,7 +3,7 @@ import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-export const Login = () => {
+export default function Login () {
   const navigate = useNavigate();
 
   useEffect(() => {

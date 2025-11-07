@@ -4,7 +4,7 @@ import { BeatLoader } from "react-spinners";
 import { Navbar } from "./Navbar";
 import { Link } from "react-router-dom";
 
-export const Home = () => {
+export default function Home() {
     const [data, setData] = useState([]);
     const [displayed, setDisplayed] = useState([]);
     const [cart, setCart] = useState([]);
