@@ -8,6 +8,8 @@ export const Login = () => {
         navigate("/");
     }
     const validationSchema = yup.object({
+        fullname : yup.string()
+        .required("Name is Required"),
         email: yup
             .string()
             .required("Email is required")
