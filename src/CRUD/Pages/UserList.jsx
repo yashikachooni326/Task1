@@ -1,19 +1,23 @@
 import { useState, useEffect } from "react";
 import { getUser,deleteUser  } from "../Api/API";
 import { useNavigate } from "react-router-dom";
+import Spinner from "./Spinner";
 export const UserList = () => {
   const [user, setUser] = useState([]);
   const [existUser , setExistUser] = useState(null);
-
+  const [loading,setLoading] = useState(true);
   useEffect(() => {
     const fetchUser = async () => {
+      setLoading(true);
       try {
         const res = await getUser();
         console.log(res.data.data);
         const result = res.data.data;
         setUser(result);
+        setLoading(false);
       } catch (err) {
         console.error("Error fetching users:", err);
+        setLoading(false);
       }
     };
 
@@ -38,6 +42,11 @@ export const UserList = () => {
         console.log('error occur:',err);
     }
   };
+
+  if(loading)
+  {
+    return <Spinner/>
+  }
 
   return (
     <div className="p-6">

@@ -1,6 +1,11 @@
 import { Routes, Route } from "react-router-dom";
-import { Form } from "./CRUD/Pages/Form";
-import { UserList } from "./CRUD/Pages/UserList";
+// import { Form } from "./CRUD/Pages/Form";
+// import { UserList } from "./CRUD/Pages/UserList";
+// import { Form } from "./Crud2/Components/Form";
+// import { Userdata } from "./Crud2/Components/UserData";
+// import { DetailPage } from "./Crud2/Components/DetailPage";
+import Parent from "./UseContext/Parent";
+import { SimpleForm } from "./SimpleForm/SimpleForm";
 // import { Navbar } from "./Day8/Navbar";
 // import { Cards } from "./Day8/Cards";
 // import { Todo } from "./Day8/Todo";
@@ -17,15 +22,26 @@ import { UserList } from "./CRUD/Pages/UserList";
 // const Signup = lazy(() => import('./Day7/Signup'));
 // const Login = lazy(() => import('./Day7/Login'));
 
+// import ListingPage from "./UseContext/ListingPage";
+// import { Form } from "./Formhandling/Form";
+// import { Form2 } from "./Formhandling/Form2";
 
 function App() {
   return (
+//  <Form/>
+      // <Routes>
+      //   <Route path="/" element={<Form/>} />
+      //   <Route path="/listing" element={<Form2 />} />
+      // </Routes>
 
-    <Routes>
-      <Route path="/" element={<Form/>}/>
-      <Route path='/form/:id' element={<Form/>}/>
-      <Route path='/user-list' element={<UserList/>}/>
-    </Routes>
+
+      <SimpleForm/>
+       
+    // <Routes>
+    //   <Route path="/" element={<Form/>}/>
+    //   <Route path='/form/:id' element={<Form/>}/>
+    //   <Route path='/user-list' element={<UserList/>}/>
+    // </Routes>
 
     // <Suspense fallback={<div>Loading...</div>}>
     //   <Routes>
@@ -50,8 +66,12 @@ function App() {
   //  <Cards/>
  
 
-
-
+// {/* <Routes>
+//   <Route path="/" element={<Form/>}/>
+//   <Route path="/form/:id" element={<Form/>}/>
+//   <Route path="/user-data" element={<Userdata/>}/>
+//   <Route path="/detail/:id" element={<DetailPage/>}/>
+// </Routes> */}
 
 
 );

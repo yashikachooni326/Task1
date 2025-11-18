@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const baseURL =  'http://74.208.13.142:6051';
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZWY3MzdmYmI3MjA5MGMwODVkY2QwZiIsImlhdCI6MTc2MjgzODcxOSwiZXhwIjoxNzYyODc0NzE5fQ.krFc_roX020h2d1asdXo4ugGaF-2mw82DSzheY3AMWg';
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZWY3MzdmYmI3MjA5MGMwODVkY2QwZiIsImlhdCI6MTc2MjkyMjAyNCwiZXhwIjoxNzYyOTU4MDI0fQ.MohoG7dMJ16rnDqmwjn-uqNYs9qxcDbPcbe0lNqP1IQ'
 
 const api = axios.create({
 baseURL : baseURL,

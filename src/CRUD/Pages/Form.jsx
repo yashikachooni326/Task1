@@ -119,7 +119,7 @@ const formik = useFormik({
                             <input
                                 type="tel"
                                 className="border rounded-lg p-2 w-full"
-                                name="phone" values={formik.values.phone} onChange={formik.handleChange} onBlur={formik.handleBlur}
+                                name="phone" value={formik.values.phone} onChange={formik.handleChange} onBlur={formik.handleBlur}
                             /><br/>
                             {formik.touched.phone && formik.errors.phone && (
                                 <p className="text-red-400">{formik.errors.phone}</p>
@@ -131,7 +131,7 @@ const formik = useFormik({
                             <input
                                 type="text"
                                 className="border rounded-lg p-2 w-full"
-                                name="city"values={formik.values.city} onChange={formik.handleChange} onBlur={formik.handleBlur}
+                                name="city"value={formik.values.city} onChange={formik.handleChange} onBlur={formik.handleBlur}
                             /><br/>
                             {formik.touched.city && formik.errors.city &&(
                                 <p className="text-red-400">{formik.errors.city}</p>
@@ -145,7 +145,7 @@ const formik = useFormik({
                             <input
                                 type="email"
                                 className="border rounded-lg p-2 w-full"
-                                name="email" values={formik.values.email} onChange={formik.handleChange} onBlur={formik.handleBlur}
+                                name="email" value={formik.values.email} onChange={formik.handleChange} onBlur={formik.handleBlur}
                             /><br/>
                             {formik.touched.email && formik.errors.email && (
                                 <p className="text-red-400">{formik.errors.email}</p>
@@ -157,7 +157,7 @@ const formik = useFormik({
                             <input
                                 type="text"
                                 className="border rounded-lg p-2 w-full"
-                                name="address"values={formik.values.address} onChange={formik.handleChange} onBlur={formik.handleBlur}
+                                name="address"value={formik.values.address} onChange={formik.handleChange} onBlur={formik.handleBlur}
                             /><br/>
                             {formik.touched.address && formik.errors.address && (
                                 <p className="text-red-400">{formik.errors.address}</p>
@@ -169,7 +169,7 @@ const formik = useFormik({
                             <input
                                 type="text"
                                 className="border rounded-lg p-2 w-full"
-                                name="state"values={formik.values.state} onChange={formik.handleChange} onBlur={formik.handleBlur}
+                                name="state"value={formik.values.state} onChange={formik.handleChange} onBlur={formik.handleBlur}
                             /><br/>
                             {formik.touched.state && formik.errors.state && (
                                 <p className="text-red-400">{formik.errors.state}</p>
@@ -181,7 +181,7 @@ const formik = useFormik({
                             <input
                                 type="text"
                                 className="border rounded-lg p-2 w-full"
-                                name="zipCode" values={formik.values.zipCode} onChange={formik.handleChange} onBlur={formik.handleBlur}
+                                name="zipCode" value={formik.values.zipCode} onChange={formik.handleChange} onBlur={formik.handleBlur}
                             /><br/>
                             {formik.touched.zipCode && formik.errors.zipCode && (
                                 <p className="text-red-400">{formik.errors.zipCode}</p>

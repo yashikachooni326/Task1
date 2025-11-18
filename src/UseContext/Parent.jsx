@@ -1,4 +1,4 @@
-/* import React, { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Parent() {
@@ -79,4 +79,8 @@ const deleteRow = (index) => {
       <button type="submit" className="border rounded-lg">Submit</button>
     </form>
   );
-} */
+}
+
+
+
+
