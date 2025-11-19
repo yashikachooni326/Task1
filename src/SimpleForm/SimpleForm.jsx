@@ -39,29 +39,47 @@ const [isSubmitted, setIsSubmitted] = useState(false);
  const [data,setdata] = useState([]);
  const[isValid, setIsValid] = useState(false);
 
-const handleChange = (e)=>
-{
-    const{name,value} = e.target
-    setFormValue(prev => ({...prev,[name]:value}))
-    if(isSubmitted)
-    {
-  setErrors(validateForm({...formValue, [name]: value}) || {});    
-   }
-}
+// const handleChange = (e)=>
+// {
+//     const{name,value} = e.target
+//     setFormValue(prev => ({...prev,[name]:value}))
+//     if(isSubmitted)
+//     {
+//   setErrors(validateForm({...formValue, [name]: value}) || {});    
+//    }
+// }
+
+const handleChange = (e) => {
+    const { name, value } = e.target;
+    
+    setFormValue(prev => ({ ...prev, [name]: value }));
+
+    const updatedFormValues = { ...formValue, [name]: value };
+
+    if (isSubmitted) {
+              setErrors(validateForm(updatedFormValues) || {});
+    }
+};
+
 
 const handleSubmit = (e)=> {
     e.preventDefault();
     const validationErrors = validateForm(formValue);
     setErrors(validationErrors);
     
+
     const formIsValid = !validationErrors; 
     setIsValid(formIsValid);
     setIsSubmitted(true);
 
     if (formIsValid) { 
         console.log('Form Submitted!');
-        setdata(prev=> [...prev,formValue])
-        localStorage.setItem('userdata',JSON.stringify(formValue));
+
+         const existingData = localStorage.getItem('userdata');
+         const userData = existingData  ? JSON.parse(existingData) : [];
+         const update = [...userData,formValue];
+setdata(update)
+        localStorage.setItem('userdata',JSON.stringify(update));
         Swal.fire({
             title: "form submitted!",
             icon: "success",
@@ -72,9 +90,9 @@ const handleSubmit = (e)=> {
     }
 };
 
-  return (
-    <>
-      <form onSubmit={handleSubmit}>
+  return ( 
+<>
+ <form onSubmit={handleSubmit}>
   <div className="max-w-2xl mx-auto p-8 bg-white shadow-xl border border-indigo-300 rounded-xl">
  <button className="border px-7 py-1 cursor-pointer  bg-indigo-300">Show Users</button>
           <h1 className="text-center mb-10 font-semibold text-3xl text-indigo-500">

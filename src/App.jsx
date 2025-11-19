@@ -4,8 +4,10 @@ import { Routes, Route } from "react-router-dom";
 // import { Form } from "./Crud2/Components/Form";
 // import { Userdata } from "./Crud2/Components/UserData";
 // import { DetailPage } from "./Crud2/Components/DetailPage";
-import Parent from "./UseContext/Parent";
-import { SimpleForm } from "./SimpleForm/SimpleForm";
+// import Parent from "./UseContext/Parent";
+import { SimpleForm } from "./Form2/SimpleForm";
+import { ListingPage } from "./Form2/Listingpage";
+// import { SimpleForm } from "./SimpleForm/SimpleForm";
 // import { Navbar } from "./Day8/Navbar";
 // import { Cards } from "./Day8/Cards";
 // import { Todo } from "./Day8/Todo";
@@ -35,8 +37,14 @@ function App() {
       // </Routes>
 
 
-      <SimpleForm/>
-       
+      // <SimpleForm/>
+
+<Routes>
+  <Route path="/" element={<SimpleForm/>} />      
+  <Route path="/listing" element={<ListingPage/>}/> 
+  <Route path="/edit/:id" element={<SimpleForm/>}/>
+</Routes>
+
     // <Routes>
     //   <Route path="/" element={<Form/>}/>
     //   <Route path='/form/:id' element={<Form/>}/>
