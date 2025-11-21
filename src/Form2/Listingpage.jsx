@@ -28,10 +28,10 @@ export const ListingPage = () => {
         <>
 
       
-          <button onClick={moveBtn}>Back Button</button>
+          <button onClick={moveBtn} className="border px-5 py-1 bg-amber-100 mt-10 ml-5">Back Button</button>
             <h2 className="font-bold text-lg   text-center mb-10 mt-10 text-amber-400 text-xl">User Data</h2>
         {data.length != 0 ? (
-            <table>
+            <table className="ml-80">
                 <thead>
                     <tr>
                         <th className="p-3 border font-bold text-teal-700 bg-stone-200 text-lg">Name</th>

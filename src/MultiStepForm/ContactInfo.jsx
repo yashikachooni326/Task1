@@ -1,13 +1,17 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
+import ReactQuill from 'react-quill-new';
+import 'react-quill-new/dist/quill.snow.css';
 
-export const ContactInfo = ({ nextStep, prevStep, handleChange, values }) => {
+export const ContactInfo = ({ handleChange, handleSubmit, values, errors }) => {
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    nextStep(); 
-  };
+  const [value, setValue] = useState('')
+
 
   return (
-    <div className="max-w-sm mx-auto mt-20 p-6 border border-gray-300 rounded-lg shadow-lg">
+    <div className="max-w-sm mx-auto mt-20 p-6 border border-gray-300 rounded-lg ">
       <h2 className="text-2xl font-bold text-center mb-6 text-gray-700">Contact Info</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
@@ -20,34 +24,28 @@ export const ContactInfo = ({ nextStep, prevStep, handleChange, values }) => {
             className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
+          {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+
         </div>
         <div className="mb-4">
           <label className="block text-gray-700 mb-1">Phone:</label>
-          <input
-            type="text"
-            name="phone"
+
+          <PhoneInput
+            country={'us'}
             value={values.phone}
-            onChange={handleChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
+            onChange={(phone)=> handleChange({target : {name:'phone',value:phone}})}
           />
+          {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
+
         </div>
 
-        <div className="flex justify-between mt-6">
-          <button
-            type="button"
-            onClick={prevStep}
-            className="bg-gray-400 text-white py-2 px-4 rounded hover:bg-gray-500 transition-colors"
-          >
-            Previous
-          </button>
-          <button
-            type="submit"
-            className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-colors"
-          >
-            Next
-          </button>
+        <div>
+          <label>Description:</label>
+          <ReactQuill theme="snow" value={values.description} onChange={(description)=> handleChange({target : {name:"description",value:description}})} />
+          {errors.description && <p className="text-red-500 text-sm">{errors.description}</p>}
+
         </div>
+
       </form>
     </div>
   );
