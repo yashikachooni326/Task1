@@ -155,61 +155,61 @@ const delteForm = (index) => {
             </div>
             <form onSubmit={handleSubmit}>
                 {formData.map((form, index) => (
-                    <div key={form.id} className="border p-5 mt-5 rounded-lg bg-white shadow-md">
+                    <div key={form?.id} className="border p-5 mt-5 rounded-lg bg-white shadow-md">
                         <h2 className="font-bold mb-3 text-sky-600">Form {index + 1}</h2>
 
                         <label>Name:</label><br />
                         <input
                             type="text"
                             className="border px-4 py-1 rounded-lg mb-3 w-full"
-                            value={form.name}
+                            value={form?.name}
                             onChange={(e) => handleChange(index, 'name', e.target.value)}
                         /><br />
-                        {submited && validateName(form.name) && <p className="text-red-500">{validateName(form.name)}</p>}
+                        {submited && validateName(form?.name) && <p className="text-red-500">{validateName(form?.name)}</p>}
 
                         <label>Email:</label><br />
                         <input
                             type="email"
                             className="border px-4 py-1 rounded-lg mb-3 w-full"
-                            value={form.email}
+                            value={form?.email}
                             onChange={(e) => handleChange(index, 'email', e.target.value)}
                         /><br />
-                        {submited && validateEmail(form.email) && <p className="text-red-500">{validateEmail(form.email)}</p>}
+                        {submited && validateEmail(form?.email) && <p className="text-red-500">{validateEmail(form?.email)}</p>}
 
                         <label>City:</label><br />
                         <input
                             type="text"
                             className="border px-4 py-1 rounded-lg mb-3 w-full"
-                            value={form.city}
+                            value={form?.city}
                             onChange={(e) => handleChange(index, 'city', e.target.value)}
                         /><br />
-                        {submited && validateCity(form.city) && <p className="text-red-500">{validateCity(form.city)}</p>}
+                        {submited && validateCity(form?.city) && <p className="text-red-500">{validateCity(form?.city)}</p>}
 
                         <label>Phone:</label><br />
                         <PhoneInput
                             country={'us'}
-                            value={form.phone}
+                            value={form?.phone}
                             onChange={(phone) => handleChange(index, 'phone', phone)}
                         /><br /><br />
-                        {submited && validatePhone(form.phone) && <p className="text-red-500">{validatePhone(form.phone)}</p>}
+                        {submited && validatePhone(form?.phone) && <p className="text-red-500">{validatePhone(form?.phone)}</p>}
 
                         <label>Food:</label><br />
                         <Select
                             closeMenuOnSelect={false}
                             isMulti
                             options={options}
-                            value={form.food}
+                            value={form?.food}
                             onChange={(food) => handleChange(index, 'food', food)}
                         /><br />
-                        {submited && validateFood(form.food) && <p className="text-red-500">{validateFood(form.food)}</p>}
+                        {submited && validateFood(form?.food) && <p className="text-red-500">{validateFood(form?.food)}</p>}
 
                         <label>Description:</label><br />
                         <ReactQuill
                             theme="snow"
-                            value={form.description}
+                            value={form?.description}
                             onChange={(desc) => handleChange(index, 'description', desc)}
                         />
-                        {submited && validateDescription(form.description) && <p className="text-red-500">{validateDescription(form.description)}</p>}
+                        {submited && validateDescription(form?.description) && <p className="text-red-500">{validateDescription(form?.description)}</p>}
 
                         <button
                             type="button"

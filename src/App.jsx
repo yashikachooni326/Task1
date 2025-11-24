@@ -6,18 +6,19 @@ import { Routes, Route } from "react-router-dom";
 // import { DetailPage } from "./Crud2/Components/DetailPage";
 // import Parent from "./UseContext/Parent";
 
-// import { SimpleForm } from "./Form2/SimpleForm";
+import { SimpleForm } from "./Form2/SimpleForm";
 // import { ListingPage } from "./Form2/Listingpage";
 
 
 
-// import { MultiStepForm } from "./MultiStepForm/MultiStepForm";
-// import { ListingPage } from "./MultiStepForm/ListingPage";
-// import { UserDetail } from "./MultiStepForm/Validations/UserDetail";
+import { MultiStepForm } from "./MultiStepForm/MultiStepForm";
+import { ListingPage } from "./MultiStepForm/ListingPage";
+import { UserDetail } from "./MultiStepForm/Validations/UserDetail";
 
 
 import { DynamicForm } from "./DynamicForm/DynamicForm";
 import { Table } from "./DynamicForm/ListingPage";
+import { View } from "./DynamicForm/View";
 
 
 
@@ -52,6 +53,10 @@ function App() {
       // </Routes>
 
 
+
+
+
+
       // <SimpleForm/>
 
 
@@ -59,11 +64,11 @@ function App() {
 
 
 
-// <Routes>
+//  <Routes>
 //   <Route path="/" element={<SimpleForm/>} />      
 //   <Route path="/listing" element={<ListingPage/>}/> 
 //   <Route path="/edit/:id" element={<SimpleForm/>}/>
-// </Routes>
+//  </Routes>  
 
 
 
@@ -71,25 +76,25 @@ function App() {
 
 
 
-//Multi step form
-
-// {/* <Routes>
-//   <Route path="/" element={<MultiStepForm/>}/>
-//   <Route path="/listing-page" element={<ListingPage/>}/>
-//   <Route path="/edit/:id" element={<MultiStepForm/>}/>
-//   <Route path="/user/:id" element={<UserDetail/>}/>
-// </Routes> */}
+// //  //Multi step form
+ <Routes>
+  <Route path="/" element={<MultiStepForm/>}/>
+  <Route path="/listing-page" element={<ListingPage/>}/>
+  <Route path="/edit/:id" element={<MultiStepForm/>}/>
+  <Route path="/user/:id" element={<UserDetail/>}/>
+</Routes> 
 
 
 
 
 // //Dynamic form
 
- <Routes>
-  <Route path="/" element={<DynamicForm/>}/>
-  <Route path="/table" element={<Table/>}/>
-  <Route path="/edit/:id" element={<DynamicForm/>}/>
-</Routes> 
+//  <Routes>
+//   <Route path="/" element={<DynamicForm/>}/>
+//   <Route path="/table" element={<Table/>}/>
+//   <Route path="/edit/:id" element={<DynamicForm/>}/>
+//   <Route path='/view/:id' element={<View/>}/>
+// </Routes> 
 
 
 
